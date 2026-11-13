@@ -1,0 +1,9 @@
+{
+  "main_blocked_ms": 2000,
+  "drag_completed_during_block": true,
+  "overlay_thread": "SkipFlowOverlay",
+  "max_sampled_input_lag_ms": 27,
+  "count_before": "25",
+  "count_after": "25",
+  "probe_output": "Broadcasting: Intent { act=com.ahsan.skipflow.DEBUG_STALL flg=0x10400000 cmp=com.ahsan.skipflow/.DebugUiStallReceiver }\nBroadcast completed: result=0"
+}

@@ -1,0 +1,10 @@
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+ android:accessibilityEventTypes="typeWindowStateChanged|typeWindowContentChanged|typeViewScrolled"
+ android:accessibilityFeedbackType="feedbackGeneric"
+ android:accessibilityFlags="flagReportViewIds"
+ android:notificationTimeout="150"
+ android:canRetrieveWindowContent="true"
+ android:packageNames="com.google.android.youtube,com.google.android.apps.youtube.music"
+ android:description="@string/service_description"
+ android:settingsActivity="com.ahsan.skipflow.MainActivity"
+ android:isAccessibilityTool="false"/>
