@@ -1,11 +1,34 @@
+# Local build and IDE state
 .gradle/
 .kotlin/
 **/build/
 local.properties
 .idea/
+*.iml
+.cxx/
+.externalNativeBuild/
+.DS_Store
+**/__pycache__/
+*.py[cod]
+*.log
+*.hprof
 
+# Private signing material and local credentials
 .signing/
 *.jks
 *.keystore
 *.p12
 keystore.properties
+.env
+.env.*
+!.env.example
+
+# Attach compiled binaries to GitHub Releases, not source commits
+*.apk
+*.aab
+*.idsig
+
+# Project-local backups, device test evidence and internal review notes
+/design/previous-v0.1/
+/design/verification/
+/PLAY-STORE-READINESS.md

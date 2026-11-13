@@ -20,7 +20,9 @@ if not sdk: raise SystemExit('Set ANDROID_HOME to your Android SDK.')
 build_tools = Path(sdk) / 'build-tools' / '36.0.0'
 
 def run(argv):
-    result = subprocess.run([str(x) for x in argv], cwd=root, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    env = dict(os.environ)
+    if env.get('JAVA_HOME'): env['PATH'] = str(Path(env['JAVA_HOME']) / 'bin') + os.pathsep + env.get('PATH', '')
+    result = subprocess.run([str(x) for x in argv], cwd=root, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     if result.returncode: raise SystemExit(result.stdout)
     return result.stdout
 
@@ -37,6 +39,8 @@ if 'application-debuggable' in badging or 'android:debuggable(0x0101000f)=(type 
 if 'android:testOnly' in manifest or 'DebugUiStallReceiver' in manifest or 'E: instrumentation ' in manifest:
     raise SystemExit('Refusing APK containing debug/test components.')
 with zipfile.ZipFile(source) as apk:
+    if 'assets/licenses/Lato-OFL.txt' not in apk.namelist():
+        raise SystemExit('Bundled font license is missing from APK assets.')
     if any(b'DebugUiStallReceiver' in apk.read(name) for name in apk.namelist() if name.endswith('.dex')):
         raise SystemExit('Debug stall-probe class unexpectedly packaged in release.')
 out = root / 'releases' / ('v' + version)
@@ -45,7 +49,7 @@ final = out / ('SkipFlow-v' + version + '.apk')
 with tempfile.TemporaryDirectory(prefix='skipflow-sign-') as work:
     aligned = Path(work) / 'aligned.apk'
     run([build_tools / 'zipalign', '-P', '16', '-f', '4', source, aligned])
-    run([build_tools / 'apksigner', 'sign', '--ks', key, '--ks-key-alias', 'skipflow-release', '--ks-pass', 'file:' + str(password), '--key-pass', 'file:' + str(password), '--v4-signing-enabled', 'false', '--out', final, aligned])
+    run([build_tools / 'apksigner', 'sign', '--ks', key, '--ks-key-alias', 'skipflow-release', '--ks-pass', 'file:' + str(password), '--v4-signing-enabled', 'false', '--out', final, aligned])
 verification = run([build_tools / 'apksigner', 'verify', '--verbose', '--print-certs', final])
 run([build_tools / 'zipalign', '-c', '-P', '16', '4', final])
 digest = hashlib.sha256(final.read_bytes()).hexdigest()

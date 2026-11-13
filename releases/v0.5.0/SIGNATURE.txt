@@ -1,0 +1,17 @@
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): true
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=Ahsan Nawaz, OU=SkipFlow, O=Independent Development, C=PK
+Signer #1 certificate SHA-256 digest: d69238dabee5e9127e5d926f0610a9fa16b69279abb2065e9bdbd2d26255e475
+Signer #1 certificate SHA-1 digest: 4789506675930f6a88d7c8951875bfeefed73f5b
+Signer #1 certificate MD5 digest: 74e4bd3bbb6d7014b21ff1ecbc88cca2
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 3072
+Signer #1 public key SHA-256 digest: 2082b9b627fb0e9022440c32d1f1405cb5e4cdff4a91c3ef361b7eaa0e5a07bd
+Signer #1 public key SHA-1 digest: 618f7c37fef3d1c5de1357836abe6a8fbe38c4dd
+Signer #1 public key MD5 digest: 8a6c844870872f25013e19aa4adc08be

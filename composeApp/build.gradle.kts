@@ -15,6 +15,7 @@ kotlin {
 }
 android {
  sourceSets.getByName("debug").manifest.srcFile("src/androidDebug/AndroidManifest.xml")
+ sourceSets.getByName("main").assets.srcDir("src/androidMain/assets")
  namespace = "com.ahsan.skipflow"
  compileSdk = 36
  defaultConfig { applicationId = "com.ahsan.skipflow"; minSdk = 26; targetSdk = 36; versionCode = 8; versionName = "0.5.0"; testInstrumentationRunner = "com.ahsan.skipflow.VolumeInstrumentation" }

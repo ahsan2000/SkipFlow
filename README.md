@@ -120,3 +120,7 @@ Final v0.5.0 verification after the pause-race safeguard and Accessibility recon
 - Pause/Resume both passed on the dedicated overlay thread, restoring the starting master state (enabled=true). Home opened MainActivity from Samsung Launcher. No AndroidRuntime errors in the final process.
 - Floating controls were re-enabled through the real in-app switch after drag-to-close testing; the icon is available again. The Accessibility service reconnected successfully after the user toggled it off/on.
 - Latest metrics are in design/verification/v0.5/stall-result.json and controls-result.json. The drag-to-close and re-enable evidence was captured on the same overlay implementation before the final pause-state-only safeguard.
+
+
+## Direct APK release
+Signed v0.5.0 APK and checksum are available under releases/v0.5.0/. See RELEASING.md for GitHub upload and future signing instructions. The private .signing/ directory must never be published.
